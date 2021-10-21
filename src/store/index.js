@@ -1,15 +1,25 @@
-import { createStore } from "redux"
-import reducer from "../reducers"
+import { combineReducers, createStore } from "redux"
+import jobReducer from "../reducers/job"
+import favoriteReducer from "../reducers/favorite"
 export const initialState = {
 
     favorite:{
-        companies: []
+        companies: [],
+    },
+    job:{
+        jobs:[],
     }
+    
 }
+
+const mainReducer = combineReducers({
+    favorite: favoriteReducer,
+    job: jobReducer,
+})
 
 
 const configureStore = createStore(
-    reducer,
+    mainReducer,
     initialState,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )

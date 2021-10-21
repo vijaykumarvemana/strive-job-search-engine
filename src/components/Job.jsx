@@ -2,14 +2,12 @@ import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import {addToFavoriteAction}  from '../actions'
 const mapStateToProps = (state) => ({})
 
 const mapDispatchToProps = (dispatch) => ({
-  addToFavorite: (company) =>{
-    dispatch({
-      type: 'ADD_COMPANY_TO_FAVORITE',
-      payload: company
-    })
+  addToFavorite: (company) => {
+    dispatch(addToFavoriteAction(company))
   }
 })
 
