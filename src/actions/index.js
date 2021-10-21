@@ -18,19 +18,19 @@ export const removeFavoriteAction = (index) => ({
 
   export const getJobsAction = () => {
     return async (dispatch, getState) => {
-      console.log('...fetching the Jobs')
-      dispatch({
-        type: GET_JOBS_LOADING,
-        payload: true,
-      })
+      console.log('...fetching the Jobs', getState())
+    //   dispatch({
+    //     type: GET_JOBS_LOADING,
+    //     payload: true,
+    //   })
       try {
         let resp = await fetch('https://strive-jobs-api.herokuapp.com/jobs?search=developer')
         if (resp.ok) {
-          let Jobs = await resp.json()
+          let jobs = await resp.json()
           
           dispatch({
             type: GET_JOBS,
-            payload: Jobs,
+            payload: jobs,
           })
           dispatch({
             type: GET_JOBS_ERROR,

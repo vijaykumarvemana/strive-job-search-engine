@@ -2,8 +2,23 @@ import React from 'react'
 import { Container, Row, Col, Form,Button } from 'react-bootstrap'
 import Job from './Job'
 import uniqid from 'uniqid'
+import { connect } from 'react-redux'
+import { getJobsAction } from '../actions'
 
-export default class MainSearch extends React.Component {
+
+const mapStateToProps = (state) => ({
+    // jobs: state.job.jobs,
+    // isError: state.job.isError,
+    // isLoading: state.job.isLoading
+  })
+  
+  const mapDispatchToProps = (dispatch) => ({
+    getJobs: () => {
+      dispatch(getJobsAction())
+    }
+  })
+
+ class MainSearch extends React.Component {
 
     state = {
         query: '',
@@ -57,3 +72,4 @@ export default class MainSearch extends React.Component {
         )
     }
 }
+export default connect(mapStateToProps,mapDispatchToProps)(MainSearch)
